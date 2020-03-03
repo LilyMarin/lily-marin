@@ -1,0 +1,827 @@
+/*
+Tutorial Name: Full Page Animated Transition
+Author: Samuel Dalusung
+*/
+
+
+/* GENERAL STYLES
+-------------------------------------------------*/
+
+body {
+width: 100%;
+}
+
+
+h1 {
+    font-family: 'Raleway';
+   
+}
+h2, p{
+  font-family: Trebuchet MS, sans-serif;
+}
+a:hover{
+  text-decoration: line-through #ff7373!important;
+  color: black !important;
+ }
+
+
+/* PAGES
+-------------------------------------------------*/
+
+#main-page {
+  height: 25px;
+  width: 375px;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+  background-color: #27ae60;
+  display: none;
+  background-image: url('../images/hero.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+
+
+#next-page {
+  height: 25px;
+  width: 375px;
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+	margin: auto;
+  background-color: #fff;
+	display: none;
+}
+
+#next-page-two {
+  height: 25px;
+  width: 375px;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+  background-color: #fff;
+  display: none;
+}
+#next-page-three {
+  height: 25px;
+  width: 375px;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+  background-color: #fff;
+  display: none;
+}
+
+.maincontent, .nextcontent, .nextcontent-two, .nextcontent-three{
+	padding-top: 40px;
+  display: none;
+}
+.nextcontent, .nextcontent-two, .nextcontent-three{
+  background-color: #fff;
+}
+#next-page .logo, #next-page-two .logo, #next-page-three .logo{
+  width: 300px !important;
+  height: 100% !important;
+}
+a.back{
+  font-family: 'Lato';
+  font-size: 20px;
+  color: #dfdfdf;
+  text-decoration: none;
+  text-align: center;
+  width: 20%;
+  margin: 25px auto 30px auto;
+  display: block;
+}
+
+
+
+a.mainlink, a.nextlink, a.mainlink-two, a.nextlink-two, a.mainlink-three, a.nextlink-three {
+  font-family: 'Lato';
+  color: #fff;
+  padding: 15px 10px;
+  display: block;
+  text-align: center;
+  margin: 25px auto;
+  width: 13%;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+
+}
+
+a.mainlink:hover, a.nextlink:hover, a.mainlink-two:hover, a.nextlink-two:hover, a.mainlink-three:hover, a.nextlink-three:hover{
+    color: #575757;
+} 
+
+
+/*--------------------------------------------------------------
+                      Main Page
+--------------------------------------------------------------*/
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text h1 {
+  display: block;
+  font-size: 54px !important;
+  line-height: 25px !important;
+  font-weight: 900;
+}
+.myNav{
+  padding-top: 300px;
+}
+
+
+
+
+.Menu-list {
+  font-size: 50px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: left;
+  margin-left: 25px;
+  align-items: center;
+  
+}
+
+.Menu-list-item {
+  position: relative;
+  color: transparent;
+  cursor: pointer;
+}
+.Menu-list-item::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 49%;
+  left: -10%;
+  right: -10%;
+  height: 4px;
+  border-radius: 4px;
+  margin-top: -2px;
+  background: #FF2C75;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  transition: -webkit-transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98), -webkit-transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  z-index: 1;
+}
+
+.Mask {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  color: #fff;
+  top: 0;
+  height: 49%;
+  transition: all 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+}
+.Mask span {
+  display: block;
+}
+
+.Mask + .Mask {
+  top: 48.9%;
+  height: 51.1%;
+}
+.Mask + .Mask span {
+  -webkit-transform: translateY(-49%);
+          transform: translateY(-49%);
+}
+
+.Menu-list-item:hover .Mask,
+.Menu-list-item:active .Mask {
+  color: #FFF;
+  -webkit-transform: skewX(12deg) translateX(5px);
+          transform: skewX(12deg) translateX(5px);
+}
+.Menu-list-item:hover .Mask + .Mask,
+.Menu-list-item:active .Mask + .Mask {
+  -webkit-transform: skewX(12deg) translateX(-5px);
+          transform: skewX(12deg) translateX(-5px);
+}
+.Menu-list-item:hover::before,
+.Menu-list-item:active::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+/*--------------------------------------------------------------
+                    End Main Page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+                      Sections 
+--------------------------------------------------------------*/
+.goBack{
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    margin-left: 50px;
+    margin-top: 10%;
+}
+.goBack a{
+    color: #000 !important;
+}
+.section-one, .section-two, .section-three{
+    position: absolute;
+    top: 14%;
+    left: 5%;
+    width: 90% !important;
+}
+.section-one .section-heading, .section-two .section-heading, .section-three .section-heading{
+    position: relative;
+    z-index: 999;
+    margin-left: 15%;
+    text-shadow: -6px 4px 1px #bf5959;
+}
+.section-one .section-heading h1, .section-two .section-heading h1, .section-three .section-heading h1{
+  font-size: 150px !important;
+  font-weight: 900 !important;
+}
+.section-one .section-heading, .section-two .section-heading{
+  margin-bottom: -50px;
+  margin-top: 50px;
+}
+.section-three .section-heading{
+    float: left;
+    margin-top: 50px;
+    margin-left: 80px;
+    margin-right: -550px;
+}
+
+/*--------------------------------------------------------------
+                    End Sections
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+                      About Page
+--------------------------------------------------------------*/
+.frame-right-up{
+  position: relative;
+  z-index: 2 !important;
+}
+.frame-right-up::before {
+  bottom: 20%;
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 59%;
+  width: 400px;
+  height: 400px;
+  z-index: -1;
+  box-sizing: border-box;
+  border: 5px solid #000;
+  transform: translate(10px, -10px);
+  transition: transform 150ms;
+}
+.container-one {
+  background-color: #ced2cd !important;
+  width: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px 30px 30px 30px;
+  box-shadow: 0px 15px 76px -11px rgba(0, 0, 0, 0.2), 0px 19px 20px 0px rgba(0, 0, 0, 0.3);
+  min-height: 350px;
+}
+.container-one p{
+  position: relative;
+  line-height: 1.9;
+}
+.container-one h2{
+  font-size:  30px;
+}
+.section-one-partTwo {
+  background-color: #ced2cd;
+  height: 700px;
+}
+/*--------------------------------------------------------------
+                    End About Page
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+                      Porfolio Page
+--------------------------------------------------------------*/
+
+.container-two{
+  background-color: #ced2cd !important;
+   width: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px 30px 30px 30px;
+  box-shadow: 0px 15px 76px -11px rgba(0, 0, 0, 0.2), 0px 19px 20px 0px rgba(0, 0, 0, 0.3);
+  min-height: 350px;
+}
+
+#intro {
+  width: 100%;
+}
+
+.button {
+    position: relative;
+}
+
+.button .bottom {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    width: 100%;
+    height: 100%;
+    background-color: #bf5959;
+    display: block;
+    -webkit-transition: all .15s ease-out;
+    -moz-transition: all .15s ease-out;
+    -o-transition: all .15s ease-out;
+    transition: all .15s ease-out;
+}
+
+.button .top {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 24px 34px 22px 34px;
+    border: 2px solid #fff;
+}
+
+.button-dark .top {
+    border: 2px solid #fff;
+}
+
+.button .top .label {
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #fff;
+    font-size: 12px;
+    line-height: 110%;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-transition: all .15s ease-out;
+    -moz-transition: all .15s ease-out;
+    -o-transition: all .15s ease-out;
+    transition: all .15s ease-out;
+}
+
+.button-dark .top .label {
+    color: #fff;
+}
+
+.button:hover .bottom {
+    left: 0;
+    top: 0;
+    background-color: #f3f3f3;
+}
+
+.button:hover .top .label {
+    color: #000;
+}
+
+.button-border {
+    position: absolute;
+    background-color: #617168;
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+}
+
+.button:hover .top .button-border-left,.button:hover .top .button-border-right {
+    height: calc(100% + 2px);
+}
+
+.button:hover .top .button-border-top,.button:hover .top .button-border-bottom {
+    width: calc(100% + 2px);
+}
+
+.button-border-left {
+    left: -2px;
+    bottom: -2px;
+    width: 2px;
+    height: 0;
+}
+
+.button-border-top {
+    left: -2px;
+    top: -2px;
+    width: 0;
+    height: 2px;
+}
+
+.button-border-right {
+    right: -2px;
+    top: -2px;
+    width: 2px;
+    height: 0;
+}
+
+.button-border-bottom {
+    right: -2px;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+}
+
+/*--------------------------------------------------------------
+                    End Porfolio Page
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+                      Contact Page
+--------------------------------------------------------------*/
+
+.container-three {
+  background-color: #ced2cd !important;
+  width: 70% !important;
+  margin-right: auto;
+  margin-top: 150px;
+  padding: 50px 30px 30px 30px;
+  box-shadow: 0px 15px 76px -11px rgba(0, 0, 0, 0.2), 0px 19px 20px 0px rgba(0, 0, 0, 0.3);
+}
+.container-three h2{
+  color: #000;
+  text-align: right;
+}
+.container-three a {
+  color: black !important;
+}
+.container-three a:hover {
+  text-decoration: line-through #ff7373!important;
+  color: black !important;
+}
+
+
+.imgContact{
+  box-shadow: 0px 15px 76px -11px rgba(0, 0, 0, 0.2), 0px 19px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+/*--------------------------------------------------------------
+                    End Contact Page
+--------------------------------------------------------------*/
+
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .hero-text h1 {
+    display: none;
+    
+  }
+  .maincontent, .nextcontent, .nextcontent-two, .nextcontent-three{
+    padding-top: 20px;
+  }
+  .hero-text {
+    top: 10%;
+  }
+  .logo {
+     width: 100% !important;
+     height: 100% !important;
+  }
+  .myNav{
+      padding-top: 250px !important;
+  }
+  #next-page .logo, #next-page-two .logo, #next-page-three .logo{
+    width: 150px !important;
+  }
+  .goBack {
+    margin-left: -10px;
+  }
+    
+  #main-page {
+    background-image: url('../images/heroSmall.png');
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    box-shadow: 0px 15px 76px -11px rgba(0, 0, 0, 0.2), 0px 19px 20px 0px rgba(0, 0, 0, 0.3);
+  }
+  
+  .section-one .section-heading h1, .section-three .section-heading h1{
+    font-size: 50px !important;
+  }
+  .section-two .section-heading h1 {
+    font-size: 90px !important;
+  }
+  .section-one .section-heading{
+    margin-bottom: -30px;
+    margin-top: 50px;
+  }
+  .section-two {
+    width: 100%;
+  }
+   .section-two .section-heading {
+    margin-bottom: -40px;
+    margin-top: 0px;
+   }
+
+  .container-one, .container-two{
+    width: 90% !important;
+  }
+  .frame-right-up::before {
+    top: -10px;
+    left: 63%;
+    width: 120px;
+    height: 120px;
+  }
+  .imgContact {
+    width: 315px;
+  }
+  .image-contact {
+    margin: 20px 20px 0px 20px;
+  }
+  .container-three {
+    width: 80% !important;
+    margin-left: 50px;
+    margin-top: 0px;
+    padding-top: 50px;
+  }
+  .container-three h2{
+    font-size: 16px;
+  }
+} 
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .section-one .section-heading h1, .section-two .section-heading h1, .section-three .section-heading h1{
+    font-size: 70px !important;
+  } 
+  .goBack {
+    margin-left: 10px;
+  }
+  .container-three h2{
+    font-size: 16px;
+  }
+  .container-three {
+    width: 50% !important;
+    margin-left: 150px;
+    margin-top: 0px; 
+    padding-top: 80px;
+  }
+  .imgContact {
+    width: 550px;
+  }
+  .image-contact {
+    margin: 50px 20px 0px 100px;
+  }
+  .container-three {
+    width: 80% !important;
+    margin-left: 50px;
+    margin-top: 0px;
+    padding-top: 50px;
+  }
+  .container-three h2{
+    font-size: 16px;
+  }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .logo{
+    margin-bottom: 20px;
+    height: 100% !important;
+  }
+  .myNav a {
+    font-size: 20px;
+  }
+  .Menu-list {
+    font-size: 30px;
+  }
+  .hero-text h1 {
+    display: block;
+    font-size: 30px !important;
+    line-height: 12px !important;
+    font-weight: 900;
+  }
+  .section-one .section-heading h1, .section-two .section-heading h1, .section-three .section-heading h1{
+    font-size: 90px !important;
+  }
+  .frame-right-up::before {
+    top: -40px;
+    left: 59%;
+    width: 250px;
+    height: 250px;
+  }
+  
+  .container-one, .container-two{
+    width: 80% !important;
+  }
+  .container-three {
+    width: 50% !important;
+    margin-left: 150px;
+    margin-top: 0px; 
+    padding-top: 80px;
+  }
+  .imgContact {
+    width: 550px;
+  }
+  .image-contact {
+    margin: 50px 20px 0px 100px;
+  }
+
+ }
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .goBack {
+    margin-left: 30px;
+  }
+  .myNav a {
+    font-size: 26px;
+  }
+  .Menu-list {
+    font-size: 40px;
+  }
+   .hero-text h1 {
+    display: block;
+    font-size: 40px !important;
+    line-height: 15px !important;
+    font-weight: 900;
+  }
+  .frame-right-up::before {
+    top: -40px;
+    left: 59%;
+    width: 330px;
+    height: 330px;
+  }
+  .myNav{
+      padding-top: 300px;
+  }
+  .imgContact {
+    width: 500px;
+  }
+  .container-three {
+    width: 100% !important;
+    margin-left: auto;
+    padding-top: 110px;
+    margin-top: 150px; 
+  }
+  .container-three h2{
+    font-size: 22px;
+  }
+  .section-three .section-heading {
+    margin-left: 50px;
+  }
+  .image-contact {
+    margin: 50px 20px 0px 80px;
+  }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .hero-text h1 {
+    display: block;
+    font-size: 50px !important;
+    line-height: 22px !important;
+    font-weight: 900;
+  }
+  .section-one .section-heading h1, .section-two .section-heading h1, .section-three .section-heading h1{
+    font-size: 150px !important;
+  }
+  .container-one, .container-two{
+    width: 70% !important;
+  }
+  .container-three {
+    width: 100% !important;
+    padding-top: 150px;
+  }
+  .container-three h2{
+    font-size: 40px;
+}
+  
+  .section-three .section-heading {
+    margin-left: 30px;
+  }
+  .frame-right-up::before {
+    top: -50px;
+    left: 59%;
+    width: 400px;
+    height: 400px;
+ }
+ .imgContact {
+    width: 800px;
+  }
+  .image-contact {
+    margin: 50px 20px 0px 80px;
+  }
+
+
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1800px) {
+  
+  .frame-right-up::before {
+    left: 65%;
+   
+ }
+  .container-three {
+    margin-left: 0px;
+  } 
+
+}
+
+
+
+
+
+
+
+/* Landscape iPhone 4*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape iPhone 5*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape iPhone 6*/
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape iPhone X*/
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape Samsung*/
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 4) 
+  and (orientation: landscape) {
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape Pixel*/
+@media screen 
+  and (device-width: 411px) 
+  and (device-height: 767px) 
+  and (-webkit-device-pixel-ratio: 4) 
+  and (orientation: landscape) {
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape Pixel XL*/
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 4) 
+  and (orientation: landscape) {
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape HTC*/
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: landscape) {
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
+/* Landscape Windows*/
+@media screen 
+  and (device-width: 480px) 
+  and (device-height: 800px) 
+  and (orientation: landscape) {
+    .myNav{
+      padding-top: 30px !important;
+    }
+}
